@@ -195,37 +195,37 @@ const rooms = {
         description: 'The fintech giant where I architect scalable payment solutions',
         npcs: [
             {
-                x: 400, y: 300, type: 'experience', name: '🏗️ Cell Router Architect',
+                x: 400, y: 300, type: 'architect', name: 'Cell Router Architect',
                 message: 'I architected Cell Router - a Go-based central gateway using cell-based architecture! It handles 100-150 merchants with VPC peering, disaster recovery, and sub-10ms DynamoDB lookups. 🔥',
                 discovered: false
             },
             {
-                x: 800, y: 300, type: 'experience', name: '📈 Scale Master',
+                x: 800, y: 300, type: 'scale', name: 'Scale Master',
                 message: 'Achieved MASSIVE scale improvements! Increased daily disbursal capacity by 900% (from 300-400K to 3M), automated merchant processes, and reduced activation time from 1 week to 1 day! 🚀',
                 discovered: false
             },
             {
-                x: 1200, y: 300, type: 'experience', name: '🔧 Performance Optimizer',
+                x: 1200, y: 300, type: 'performance', name: 'Performance Optimizer',
                 message: 'Optimized payment risk engine database - achieved 50% reduction in p99 latency (100ms to 50ms) and cut MySQL costs by 75%! Also handled 250+ req/sec with high-throughput services.',
                 discovered: false
             },
             {
-                x: 400, y: 600, type: 'experience', name: '👥 Team Lead & Mentor',
+                x: 400, y: 600, type: 'leadership', name: 'Team Lead & Mentor',
                 message: 'Led backend engineering for merchant platforms (One Home, One Nav, Cross-Sell). Mentored 2 junior engineers + 3 interns, boosting productivity by 60% and reducing onboarding time!',
                 discovered: false
             },
             {
-                x: 800, y: 600, type: 'experience', name: '🤖 AI Integration Pioneer',
+                x: 800, y: 600, type: 'ai', name: 'AI Integration Pioneer',
                 message: 'Leveraged cutting-edge AI tools (LLM, Cursor, MCPs) to onboard 1,900+ routes efficiently! Also drove 700 daily unique merchant cross-sells within 7 days of launch.',
                 discovered: false
             },
             {
-                x: 1200, y: 600, type: 'experience', name: '🏗️ Infrastructure Expert',
+                x: 1200, y: 600, type: 'infrastructure', name: 'Infrastructure Expert',
                 message: 'Designed infrastructure supporting 3+ microservices with Kubernetes, Terraform (IaC), performance testing environments. Enabled 250 req/sec throughput and 80% manual setup reduction!',
                 discovered: false
             },
             {
-                x: 600, y: 900, type: 'experience', name: '💰 Revenue Impact',
+                x: 600, y: 900, type: 'revenue', name: 'Revenue Impact',
                 message: 'Built registration fee collection system generating $5K monthly capital gains. Led PHP to Golang microservice migration with zero-downtime and improved system performance!',
                 discovered: false
             },
@@ -245,42 +245,42 @@ const rooms = {
         description: 'My technical arsenal forged through years of backend mastery',
         npcs: [
             {
-                x: 300, y: 250, type: 'skill', name: '🐹 Golang Master',
+                x: 300, y: 250, type: 'golang', name: 'Golang Master',
                 message: 'Go is my weapon of choice! Built Cell Router, merchant platforms, and microservices. Expert in Gin framework, gRPC, Protobuf, and high-performance concurrent systems.',
                 discovered: false
             },
             {
-                x: 750, y: 250, type: 'skill', name: '🐍 Python Wizard',
+                x: 750, y: 250, type: 'python', name: 'Python Wizard',
                 message: 'Python for rapid development! Built chatbots with Flask & LLMs, automation scripts, data processing, and API integrations. From Django to FastAPI!',
                 discovered: false
             },
             {
-                x: 1200, y: 250, type: 'skill', name: '☸️ Kubernetes Captain',
+                x: 1200, y: 250, type: 'kubernetes', name: 'Kubernetes Captain',
                 message: 'Container orchestration expert! Managed Services, Deployments, Ingress controllers. Scaled applications handling 250+ req/sec with zero-downtime deployments.',
                 discovered: false
             },
             {
-                x: 300, y: 500, type: 'skill', name: '🗄️ Database Guru',
+                x: 300, y: 500, type: 'database', name: 'Database Guru',
                 message: 'Multi-database mastery! MySQL optimization (75% cost reduction), DynamoDB for sub-10ms lookups, Redis for caching, Elasticsearch for search. Performance is my passion!',
                 discovered: false
             },
             {
-                x: 750, y: 500, type: 'skill', name: '🔧 DevOps Engineer',
+                x: 750, y: 500, type: 'devops', name: 'DevOps Engineer',
                 message: 'Infrastructure as Code with Terraform! Docker containerization, Helm charts, Kong API gateway, performance testing environments. Automation is key!',
                 discovered: false
             },
             {
-                x: 1200, y: 500, type: 'skill', name: '📊 Messaging Systems',
+                x: 1200, y: 500, type: 'messaging', name: 'Messaging Systems',
                 message: 'Event-driven architecture expert! Apache Kafka for real-time data streaming, AWS SQS for reliable message queuing. Built resilient distributed systems!',
                 discovered: false
             },
             {
-                x: 525, y: 750, type: 'skill', name: '🤖 AI & Modern Tools',
+                x: 525, y: 750, type: 'aitools', name: 'AI & Modern Tools',
                 message: 'Early adopter of AI-assisted development! Expert with LLMs, Cursor IDE, MCPs (Model Context Protocol). Onboarded 1,900+ routes efficiently using AI tools!',
                 discovered: false
             },
             {
-                x: 975, y: 750, type: 'skill', name: '🔐 Security & Auth',
+                x: 975, y: 750, type: 'security', name: 'Security & Auth',
                 message: 'Security-first mindset! OAuth 2.0, JWT tokens, secure API design, thread-safe client caching. Built systems handling sensitive financial data at Razorpay!',
                 discovered: false
             },
@@ -300,22 +300,22 @@ const rooms = {
         description: 'Where the engineering foundation was built',
         npcs: [
             {
-                x: 600, y: 200, type: 'education', name: '🎓 NIT Karnataka Graduate',
+                x: 600, y: 200, type: 'graduate', name: 'NIT Karnataka Graduate',
                 message: 'B.Tech from National Institute of Technology, Karnataka, Surathkal (2018-2022). Major: Material Science (CGPA: 8.63), Minor: Computer Science (CGPA: 8.00). Excellence in academics! 📚',
                 discovered: false
             },
             {
-                x: 300, y: 400, type: 'education', name: '💻 CS Minor Journey',
+                x: 300, y: 400, type: 'minor', name: 'CS Minor Journey',
                 message: 'Computer Science Minor gave me the programming foundation! Data Structures, Algorithms, Database Systems, Software Engineering principles. The bridge to my tech career!',
                 discovered: false
             },
             {
-                x: 900, y: 400, type: 'education', name: '🔬 Material Science Major',
+                x: 900, y: 400, type: 'major', name: 'Material Science Major',
                 message: 'Material Science taught me analytical thinking and problem-solving! Understanding complex systems, optimization, and scientific methodology - skills I apply in backend engineering daily.',
                 discovered: false
             },
             {
-                x: 600, y: 600, type: 'education', name: '🏆 Academic Excellence',
+                x: 600, y: 600, type: 'excellence', name: 'Academic Excellence',
                 message: 'Maintained high CGPA in both majors while transitioning to tech! Demonstrates dedication, learning ability, and time management - essential for Senior SDE role.',
                 discovered: false
             },
@@ -335,32 +335,32 @@ const rooms = {
         description: 'Showcasing my technical creations and innovations',
         npcs: [
             {
-                x: 350, y: 300, type: 'project', name: '🏗️ Cell Router Architecture',
+                x: 350, y: 300, type: 'cellrouter', name: 'Cell Router Architecture',
                 message: 'My masterpiece at Razorpay! Go-based central gateway with cell-based architecture, VPC peering, disaster recovery strategy, and DynamoDB integration. Serves 100-150 merchants! 🚀',
                 discovered: false
             },
             {
-                x: 750, y: 300, type: 'project', name: '📱 Reddit AutoScroller',
+                x: 750, y: 300, type: 'reddit', name: 'Reddit AutoScroller',
                 message: 'Privacy-first browser extension for smooth Reddit browsing! Local storage only, no data collection. Built with JavaScript and browser APIs. Check it out on GitHub! 🔒',
                 discovered: false
             },
             {
-                x: 1050, y: 300, type: 'project', name: '💰 Payment Systems',
+                x: 1050, y: 300, type: 'payment', name: 'Payment Systems',
                 message: 'Built multiple payment solutions: KYC automation, fund release systems (900% capacity boost), registration fee collection ($5K monthly gains). Fintech expertise! 💳',
                 discovered: false
             },
             {
-                x: 350, y: 600, type: 'project', name: '🤖 AI-Powered Chatbot',
+                x: 350, y: 600, type: 'chatbot', name: 'AI-Powered Chatbot',
                 message: 'Built during Edzeeta internship! Python + Flask + LLMs for customer support. Achieved 50% reduction in support tickets. OAuth 2.0 & JWT authentication included! 🤖',
                 discovered: false
             },
             {
-                x: 750, y: 600, type: 'project', name: '🎮 This Portfolio Game!',
+                x: 750, y: 600, type: 'portfolio', name: 'This Portfolio Game!',
                 message: 'You\'re experiencing it right now! Built with HTML5 Canvas, vanilla JavaScript, and lots of creativity. A unique way to showcase a backend engineer\'s journey! ✨',
                 discovered: false
             },
             {
-                x: 1050, y: 600, type: 'project', name: '⚡ Performance Optimizations',
+                x: 1050, y: 600, type: 'optimization', name: 'Performance Optimizations',
                 message: 'Multiple optimization projects: 50% latency reduction, 75% cost savings, 80% manual setup reduction. Engineering excellence through data-driven improvements! 📊',
                 discovered: false
             },
@@ -872,14 +872,47 @@ function drawNPC(npc) {
     // Skip if off-screen
     if (x < -100 || x > canvas.width + 100 || y < -100 || y > canvas.height + 100) return;
     
-    // NPC colors and emojis
+    // NPC colors and unique, meaningful emojis for each specific role
     const npcConfig = {
         welcome: { color: '#ff6600', emoji: '👋' },
         portal: { color: '#9900ff', emoji: '🌀' },
         experience: { color: '#ff3366', emoji: '💼' },
         skill: { color: '#00ff99', emoji: '⚡' },
         education: { color: '#ffff00', emoji: '🎓' },
-        project: { color: '#ff9900', emoji: '🚀' }
+        project: { color: '#ff9900', emoji: '🚀' },
+        // More specific icons for different experience types
+        architect: { color: '#ff3366', emoji: '🏗️' },
+        scale: { color: '#ff3366', emoji: '📈' },
+        performance: { color: '#ff3366', emoji: '🔧' },
+        leadership: { color: '#ff3366', emoji: '👥' },
+        ai: { color: '#ff3366', emoji: '🤖' },
+        infrastructure: { color: '#ff3366', emoji: '☁️' },
+        revenue: { color: '#ff3366', emoji: '💰' },
+        // Different skill types
+        golang: { color: '#00ff99', emoji: '🐹' },
+        python: { color: '#00ff99', emoji: '🐍' },
+        kubernetes: { color: '#00ff99', emoji: '☸️' },
+        database: { color: '#00ff99', emoji: '🗄️' },
+        devops: { color: '#00ff99', emoji: '🔧' },
+        messaging: { color: '#00ff99', emoji: '📊' },
+        aitools: { color: '#00ff99', emoji: '🤖' },
+        security: { color: '#00ff99', emoji: '🔐' },
+        // Different project types
+        cellrouter: { color: '#ff9900', emoji: '🏗️' },
+        reddit: { color: '#ff9900', emoji: '📱' },
+        payment: { color: '#ff9900', emoji: '💳' },
+        chatbot: { color: '#ff9900', emoji: '🤖' },
+        portfolio: { color: '#ff9900', emoji: '🎮' },
+        optimization: { color: '#ff9900', emoji: '⚡' },
+        // Education types
+        graduate: { color: '#ffff00', emoji: '🎓' },
+        minor: { color: '#ffff00', emoji: '💻' },
+        major: { color: '#ffff00', emoji: '🔬' },
+        excellence: { color: '#ffff00', emoji: '🏆' },
+        // Contact types
+        contact: { color: '#00dddd', emoji: '📧' },
+        fun: { color: '#99ff00', emoji: '🎯' },
+        about: { color: '#ffaa00', emoji: '👨‍💻' }
     };
     
     const config = npcConfig[npc.type] || { color: '#ffffff', emoji: '❓' };
@@ -953,25 +986,44 @@ function drawNPC(npc) {
         ctx.fillText('SPACE', x, y - 38);
     }
     
-    // Much larger and more visible name label
-    ctx.fillStyle = npc.discovered ? '#00ff00' : '#ffffff';
-    ctx.font = '16px Courier New'; // Increased from 10px
+    // Much larger and more visible name label with enhanced contrast
+    ctx.font = '18px Courier New'; // Increased even more from 16px
     ctx.textAlign = 'center';
     
-    // Add background rectangle for text visibility
+    // Add larger, more visible background rectangle for text
     const textWidth = ctx.measureText(npc.name).width;
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
-    ctx.fillRect(x - textWidth/2 - 10, y + 50, textWidth + 20, 25);
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.95)'; // Nearly opaque black background
+    ctx.fillRect(x - textWidth/2 - 15, y + 48, textWidth + 30, 30);
+    
+    // Bright colored border for the text background
+    ctx.strokeStyle = config.color;
+    ctx.lineWidth = 3;
+    ctx.strokeRect(x - textWidth/2 - 15, y + 48, textWidth + 30, 30);
+    
+    // Text with high contrast - bright colors on dark background
+    const textColor = npc.discovered ? '#00ff00' : '#ffffff';
+    
+    // Multiple outline layers for maximum visibility
+    ctx.strokeStyle = '#000000';
+    ctx.lineWidth = 4;
+    ctx.strokeText(npc.name, x, y + 68);
+    
     ctx.strokeStyle = config.color;
     ctx.lineWidth = 2;
-    ctx.strokeRect(x - textWidth/2 - 10, y + 50, textWidth + 20, 25);
+    ctx.strokeText(npc.name, x, y + 68);
     
-    // Text with outline for maximum visibility
-    ctx.fillStyle = npc.discovered ? '#00ff00' : '#ffffff';
-    ctx.fillText(npc.name, x, y + 67);
-    ctx.strokeStyle = '#000000';
-    ctx.lineWidth = 1;
-    ctx.strokeText(npc.name, x, y + 67);
+    // Main text in bright white or green
+    ctx.fillStyle = textColor;
+    ctx.fillText(npc.name, x, y + 68);
+    
+    // Add glow effect for discovered NPCs
+    if (npc.discovered) {
+        ctx.shadowColor = '#00ff00';
+        ctx.shadowBlur = 8;
+        ctx.fillStyle = '#00ff00';
+        ctx.fillText(npc.name, x, y + 68);
+        ctx.shadowBlur = 0;
+    }
     
     // Larger discovery indicator
     if (npc.discovered) {
