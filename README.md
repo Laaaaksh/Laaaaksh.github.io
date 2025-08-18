@@ -199,11 +199,30 @@ class UniqueValue:
 
 [![Play Portfolio Game](https://img.shields.io/badge/🎮_PLAY_MY_PORTFOLIO-Adventure_Awaits-00ff00?style=for-the-badge&logoColor=white)](https://laaaaksh.github.io)
 
+### 🌐 **Play Online**: [laaaaksh.github.io](https://laaaaksh.github.io)
+### 💻 **Run Locally**: 
+```bash
+# Quick start options:
+python3 start-server.py    # Python server
+./start-server.sh          # Linux/Mac script
+start-server.bat           # Windows batch file
+npm start                  # Node.js server
+```
+*See [DEVELOPMENT.md](DEVELOPMENT.md) for detailed setup instructions*
+
 ### Navigate through different worlds:
 🏢 **Razorpay HQ** - Discover my engineering achievements  
 💻 **Tech Skills Lab** - Explore my technical arsenal  
 🎓 **NIT Karnataka Campus** - Learn about my education  
 🚀 **Projects Gallery** - Interact with my creations  
+
+### 🎯 **Game Features:**
+- **🖱️ Desktop**: WASD + SPACE controls
+- **📱 Mobile**: Touch controls with responsive design
+- **🗺️ Mini-map**: Navigate large game worlds
+- **🏆 Achievements**: Discover 20+ interactive story points
+- **✨ Particle effects**: Beautiful visual feedback
+- **🔄 Cross-browser**: Works on Chrome, Firefox, Safari, Edge
 
 ---
 
