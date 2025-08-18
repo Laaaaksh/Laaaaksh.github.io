@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laksh's Adventure Portfolio</title>
+    <meta name="description" content="Welcome to Laksh's interactive portfolio - an adventure game experience!">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="loading-screen" id="loadingScreen">
+            <div class="loading-text">
+                🎮 LAKSH'S ADVENTURE PORTFOLIO 🎮<br>
+                <span style="font-size: 1rem;">Loading the coolest portfolio ever...</span>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress" id="loadingProgress"></div>
+            </div>
+        </div>
+
+        <canvas id="gameCanvas"></canvas>
+
+        <div class="ui-overlay" id="uiOverlay">
+            <div>Current Area: <span id="currentArea">Welcome Zone</span></div>
+            <div>Curiosity Level</div>
+            <div class="health-bar">
+                <div class="health-fill" id="healthFill"></div>
+            </div>
+            <div>Discoveries: <span id="discoveries">0/15</span></div>
+        </div>
+
+        <div class="controls-info" id="controlsInfo">
+            Use <strong>WASD</strong> or <strong>Arrow Keys</strong> to move • <strong>SPACE</strong> to interact • <strong>E</strong> for details
+        </div>
+
+        <div class="dialog-box" id="dialogBox">
+            <div class="dialog-text" id="dialogText"></div>
+            <div class="dialog-continue">Press ENTER to continue...</div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
