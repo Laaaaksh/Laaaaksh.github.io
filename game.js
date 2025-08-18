@@ -151,7 +151,7 @@ const rooms = {
         npcs: [
             { 
                 x: 700, y: 300, type: 'welcome', name: 'Welcome AI Assistant', 
-                message: '👋 Welcome to Laksh\'s Adventure Portfolio! I\'m a Senior Backend Engineer at Razorpay with 4+ years of experience building scalable systems. Use WASD to explore different zones!',
+                message: '👋 Welcome to Laksh\'s Adventure Portfolio! I\'m a Senior Backend Engineer at Razorpay with 3+ years of experience building scalable systems. Use WASD to explore different zones!',
                 discovered: false 
             },
             { 
@@ -168,7 +168,7 @@ const rooms = {
             },
             { 
                 x: 500, y: 750, type: 'portal', name: '🎓 Education Zone', 
-                message: 'Visit NIT Karnataka and learn about my academic journey!', 
+                message: 'Visit NIT Karnataka Surathkal and learn about my academic journey!', 
                 target: 'education',
                 discovered: false 
             },
@@ -192,11 +192,11 @@ const rooms = {
         width: 1600,
         height: 1200,
         background: '#0d1b2a',
-        description: 'The fintech giant where I architect scalable payment solutions',
+        description: 'The fintech giant where I architect scalable merchant experience, support & onboarding solutions',
         npcs: [
             {
                 x: 400, y: 300, type: 'architect', name: 'Cell Router Architect',
-                message: 'I architected Cell Router - a Go-based central gateway using cell-based architecture! It handles 100-150 merchants with VPC peering, disaster recovery, and sub-10ms DynamoDB lookups. 🔥',
+                message: 'I architected Cell Router for admin agents (team of 3) - a Go-based central gateway using cell-based architecture! It handles 250+ merchants requests with VPC peering, disaster recovery, and sub-10ms DynamoDB lookups. 🔥',
                 discovered: false
             },
             {
@@ -311,7 +311,7 @@ const rooms = {
             },
             {
                 x: 900, y: 400, type: 'major', name: 'Material Science Major',
-                message: 'Material Science taught me analytical thinking and problem-solving! Understanding complex systems, optimization, and scientific methodology - skills I apply in backend engineering daily.',
+                message: 'Material Science gave me a strong foundation in analytical thinking and problem-solving. Learning to break down complex systems, optimize processes, and apply scientific methods—these are skills I use every day as a backend engineer.',
                 discovered: false
             },
             {
@@ -341,17 +341,17 @@ const rooms = {
             },
             {
                 x: 750, y: 300, type: 'reddit', name: 'Reddit AutoScroller',
-                message: 'Privacy-first browser extension for smooth Reddit browsing! Local storage only, no data collection. Built with JavaScript and browser APIs. Check it out on GitHub! 🔒',
+                message: 'Privacy-first browser extension for smooth Reddit browsing! Local storage only, no data collection. Built with JavaScript and browser APIs. <a href="https://github.com/Laaaaksh/reddit-autoscroller" target="_blank" style="color:#00ffff;text-decoration:underline;">Check it out on GitHub! 🔒</a>',
                 discovered: false
             },
             {
                 x: 1050, y: 300, type: 'payment', name: 'Payment Systems',
-                message: 'Built multiple payment solutions: KYC automation, fund release systems (900% capacity boost), registration fee collection ($5K monthly gains). Fintech expertise! 💳',
+                message: 'Built multiple merchant solutions: KYC automation, fund release systems (900% capacity boost), registration fee collection ($5K monthly gains). Fintech expertise! 💳',
                 discovered: false
             },
             {
                 x: 350, y: 600, type: 'chatbot', name: 'AI-Powered Chatbot',
-                message: 'Built during Edzeeta internship! Python + Flask + LLMs for customer support. Achieved 50% reduction in support tickets. OAuth 2.0 & JWT authentication included! 🤖',
+                message: 'Built during Edzeeta internship! Python + Flask + LLMs for customer support. Achieved reduction in support tickets. OAuth 2.0 & JWT authentication included! 🤖',
                 discovered: false
             },
             {
