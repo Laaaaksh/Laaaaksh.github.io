@@ -69,7 +69,7 @@ const gameState = {
         y: 400,
         width: 24,
         height: 24,
-        speed: 4,
+        speed: 200, // pixels per second (instead of pixels per frame)
         direction: 'down',
         animFrame: 0,
         isMoving: false,
@@ -84,7 +84,14 @@ const gameState = {
     particles: [],
     achievements: [],
     showMiniMap: true,
-    interactionRadius: 100
+    interactionRadius: 100,
+    // Add timing variables for frame-rate independence
+    lastFrameTime: 0,
+    deltaTime: 0,
+    // Performance monitoring
+    fps: 60,
+    frameCount: 0,
+    lastFpsUpdate: 0
 };
 
 // ✨ PARTICLE SYSTEM for amazing visual effects
@@ -500,39 +507,43 @@ function initGame() {
     gameLoop();
 }
 
-// 🏃‍♂️ PLAYER MOVEMENT & PHYSICS
+// 🏃‍♂️ PLAYER MOVEMENT & PHYSICS (Frame-rate independent)
 function updatePlayer() {
     const player = gameState.player;
     let moving = false;
     
+    // Calculate movement distance based on time elapsed (frame-rate independent)
+    const moveDistance = player.speed * gameState.deltaTime;
+    
     // Smooth movement with momentum
     if (gameState.keys['w'] || gameState.keys['arrowup']) {
-        player.y -= player.speed;
+        player.y -= moveDistance;
         player.direction = 'up';
         moving = true;
     }
     if (gameState.keys['s'] || gameState.keys['arrowdown']) {
-        player.y += player.speed;
+        player.y += moveDistance;
         player.direction = 'down';
         moving = true;
     }
     if (gameState.keys['a'] || gameState.keys['arrowleft']) {
-        player.x -= player.speed;
+        player.x -= moveDistance;
         player.direction = 'left';
         moving = true;
     }
     if (gameState.keys['d'] || gameState.keys['arrowright']) {
-        player.x += player.speed;
+        player.x += moveDistance;
         player.direction = 'right';
         moving = true;
     }
 
     player.isMoving = moving;
     if (moving) {
-        player.animFrame += 0.15;
+        // Animation frame now time-based too
+        player.animFrame += 0.15 * (gameState.deltaTime * 60); // Normalized to 60fps equivalent
         
-        // Add movement particles occasionally
-        if (Math.random() < 0.3) {
+        // Add movement particles occasionally (time-based probability)
+        if (Math.random() < 0.3 * (gameState.deltaTime * 60)) {
             gameState.particles.push(new Particle(
                 player.x + (Math.random() - 0.5) * 20,
                 player.y + (Math.random() - 0.5) * 20,
@@ -546,12 +557,16 @@ function updatePlayer() {
     player.x = Math.max(20, Math.min(room.width - 20, player.x));
     player.y = Math.max(20, Math.min(room.height - 20, player.y));
 
-    // Smooth camera following
+    // Smooth camera following (frame-rate independent)
     const targetCameraX = player.x - canvas.width / 2;
     const targetCameraY = player.y - canvas.height / 2;
     
-    gameState.camera.x += (targetCameraX - gameState.camera.x) * 0.1;
-    gameState.camera.y += (targetCameraY - gameState.camera.y) * 0.1;
+    // Camera lerp speed adjusted for frame rate
+    const cameraSpeed = 6.0; // Lerp strength per second
+    const lerpFactor = 1 - Math.exp(-cameraSpeed * gameState.deltaTime);
+    
+    gameState.camera.x += (targetCameraX - gameState.camera.x) * lerpFactor;
+    gameState.camera.y += (targetCameraY - gameState.camera.y) * lerpFactor;
     
     // Camera boundaries
     gameState.camera.x = Math.max(0, Math.min(room.width - canvas.width, gameState.camera.x));
@@ -804,8 +819,9 @@ function drawPlayer() {
     ctx.ellipse(x, y + 25, 15, 6, 0, 0, Math.PI * 2);
     ctx.fill();
     
-    // Player body with enhanced animation
-    const bounce = player.isMoving ? Math.sin(player.animFrame * 2) * 4 : 0;
+    // Player body with enhanced animation (time-based for consistent speed)
+    const timeInSeconds = performance.now() / 1000;
+    const bounce = player.isMoving ? Math.sin(timeInSeconds * 8) * 4 : 0; // 8Hz bounce frequency
     const playerSize = 32; // Increased from 24
     
     // Player main body - larger and more visible
@@ -923,8 +939,9 @@ function drawNPC(npc) {
     ctx.ellipse(x, y + 35, 25, 10, 0, 0, Math.PI * 2);
     ctx.fill();
     
-    // Enhanced pulsing effect
-    const pulse = Math.sin(gameState.gameTime * 0.05) * 0.3 + 1;
+    // Enhanced pulsing effect (time-based, not frame-based)
+    const timeInSeconds = performance.now() / 1000;
+    const pulse = Math.sin(timeInSeconds * 2.0) * 0.3 + 1; // 2Hz pulse frequency
     const baseSize = 35; // Increased from 20 to 35
     const size = baseSize * pulse;
     
@@ -955,18 +972,18 @@ function drawNPC(npc) {
     );
     
     if (distance < gameState.interactionRadius) {
-        // Larger, more visible interaction circle
+        // Larger, more visible interaction circle (time-based animation)
         ctx.strokeStyle = '#ffffff';
         ctx.lineWidth = 4;
         ctx.beginPath();
-        ctx.arc(x, y, 55 + Math.sin(gameState.gameTime * 0.1) * 12, 0, Math.PI * 2);
+        ctx.arc(x, y, 55 + Math.sin(timeInSeconds * 3.0) * 12, 0, Math.PI * 2);
         ctx.stroke();
         
         // Add pulsing inner circle
         ctx.strokeStyle = config.color;
         ctx.lineWidth = 2;
         ctx.beginPath();
-        ctx.arc(x, y, 45 + Math.sin(gameState.gameTime * 0.15) * 8, 0, Math.PI * 2);
+        ctx.arc(x, y, 45 + Math.sin(timeInSeconds * 4.5) * 8, 0, Math.PI * 2);
         ctx.stroke();
         
         // Much larger instruction text
@@ -1095,13 +1112,41 @@ function drawMiniMap() {
     });
 }
 
-// 🎮 MAIN GAME LOOP
-function gameLoop() {
+// 🎮 MAIN GAME LOOP (Frame-rate independent)
+function gameLoop(currentTime) {
+    // Initialize timing on first frame
+    if (!gameState.lastFrameTime) {
+        gameState.lastFrameTime = currentTime;
+        gameState.lastFpsUpdate = currentTime;
+    }
+    
+    // Calculate delta time (time elapsed since last frame in seconds)
+    gameState.deltaTime = (currentTime - gameState.lastFrameTime) / 1000;
+    gameState.lastFrameTime = currentTime;
+    
+    // Cap delta time to prevent huge jumps (e.g., when tab was inactive)
+    gameState.deltaTime = Math.min(gameState.deltaTime, 1/30); // Max 30fps equivalent
+    
+    // Calculate FPS for performance monitoring
+    gameState.frameCount++;
+    if (currentTime - gameState.lastFpsUpdate >= 1000) { // Update FPS every second
+        gameState.fps = Math.round(gameState.frameCount * 1000 / (currentTime - gameState.lastFpsUpdate));
+        gameState.frameCount = 0;
+        gameState.lastFpsUpdate = currentTime;
+        
+        // Log performance issues (optional debug)
+        if (gameState.fps < 45) {
+            console.log(`⚠️ Performance warning: FPS dropped to ${gameState.fps}`);
+        }
+    }
+    
     gameState.gameTime++;
     
-    // Update
-    updatePlayer();
-    updateParticles();
+    // Only update if delta time is significant (performance optimization)
+    if (gameState.deltaTime > 0.001) { // Skip if less than 1ms elapsed
+        updatePlayer();
+        updateParticles();
+    }
     
     // Clear and draw
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -1116,9 +1161,18 @@ function gameLoop() {
     drawPlayer();
     drawMiniMap();
     
-    // Add ambient particles periodically
-    if (gameState.gameTime % 180 === 0) {
+    // Add ambient particles periodically (simplified time-based check)
+    const ambientParticleInterval = 3; // seconds
+    if (Math.floor(currentTime / 1000) % ambientParticleInterval === 0 && 
+        Math.floor((currentTime - gameState.deltaTime * 1000) / 1000) % ambientParticleInterval !== 0) {
         createAmbientParticles();
+    }
+    
+    // Show FPS in development (you can remove this for production)
+    if (gameState.fps < 50) { // Only show if performance is an issue
+        ctx.fillStyle = 'rgba(255, 0, 0, 0.8)';
+        ctx.font = '12px Courier New';
+        ctx.fillText(`FPS: ${gameState.fps}`, 10, canvas.height - 10);
     }
     
     requestAnimationFrame(gameLoop);
