@@ -84,7 +84,7 @@ const gameState = {
     particles: [],
     achievements: [],
     showMiniMap: true,
-    interactionRadius: 80
+    interactionRadius: 100
 };
 
 // ✨ PARTICLE SYSTEM for amazing visual effects
@@ -755,15 +755,39 @@ function drawBackground() {
         room.height + 2
     );
     
-    // Draw decorations
+    // Draw decorations - much larger and more visible
     if (room.decorations) {
-        ctx.font = '40px Courier New';
-        ctx.textAlign = 'center';
         room.decorations.forEach(decoration => {
             const x = decoration.x - gameState.camera.x;
             const y = decoration.y - gameState.camera.y;
-            if (x > -60 && x < canvas.width + 60 && y > -60 && y < canvas.height + 60) {
+            if (x > -80 && x < canvas.width + 80 && y > -80 && y < canvas.height + 80) {
+                // Add background circle for decoration
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+                ctx.beginPath();
+                ctx.arc(x, y - 10, 35, 0, Math.PI * 2);
+                ctx.fill();
+                
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                
+                // Much larger decorations with better visibility
+                ctx.font = '60px Courier New'; // Increased from 40px
+                ctx.textAlign = 'center';
+                
+                // Add shadow for depth
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
+                ctx.fillText(decoration.emoji, x + 2, y + 2);
+                
+                // Main decoration
+                ctx.fillStyle = '#ffffff';
                 ctx.fillText(decoration.emoji, x, y);
+                
+                // Add subtle glow effect
+                ctx.shadowColor = '#ffffff';
+                ctx.shadowBlur = 8;
+                ctx.fillText(decoration.emoji, x, y);
+                ctx.shadowBlur = 0;
             }
         });
     }
@@ -774,39 +798,71 @@ function drawPlayer() {
     const x = player.x - gameState.camera.x;
     const y = player.y - gameState.camera.y;
     
-    // Shadow
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
+    // Larger shadow for better visibility
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
     ctx.beginPath();
-    ctx.ellipse(x, y + 20, 10, 4, 0, 0, Math.PI * 2);
+    ctx.ellipse(x, y + 25, 15, 6, 0, 0, Math.PI * 2);
     ctx.fill();
     
-    // Player body with animation
-    const bounce = player.isMoving ? Math.sin(player.animFrame * 2) * 3 : 0;
+    // Player body with enhanced animation
+    const bounce = player.isMoving ? Math.sin(player.animFrame * 2) * 4 : 0;
+    const playerSize = 32; // Increased from 24
     
+    // Player main body - larger and more visible
     ctx.fillStyle = player.color;
-    ctx.fillRect(x - 12, y - 12 + bounce, 24, 24);
+    ctx.fillRect(x - playerSize/2, y - playerSize/2 + bounce, playerSize, playerSize);
     
-    // Player details
+    // Add border for better visibility
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 3;
+    ctx.strokeRect(x - playerSize/2, y - playerSize/2 + bounce, playerSize, playerSize);
+    
+    // Player details - inner rectangle
     ctx.fillStyle = '#ffffff';
-    ctx.fillRect(x - 8, y - 8 + bounce, 16, 16);
+    const innerSize = playerSize * 0.6;
+    ctx.fillRect(x - innerSize/2, y - innerSize/2 + bounce, innerSize, innerSize);
     
-    // Direction indicator
+    // Add player identifier emoji
+    ctx.font = '20px Courier New';
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#000000';
+    ctx.fillText('👨‍💻', x, y + 6 + bounce);
+    
+    // Direction indicator - larger and more visible
     const dirColors = { up: '#ff0000', down: '#00ff00', left: '#0000ff', right: '#ffff00' };
     ctx.fillStyle = dirColors[player.direction];
     
     const dirOffsets = {
-        up: { x: 0, y: -18 }, down: { x: 0, y: 18 },
-        left: { x: -18, y: 0 }, right: { x: 18, y: 0 }
+        up: { x: 0, y: -25 }, down: { x: 0, y: 25 },
+        left: { x: -25, y: 0 }, right: { x: 25, y: 0 }
     };
     
     const offset = dirOffsets[player.direction];
-    ctx.fillRect(x + offset.x - 3 + bounce/2, y + offset.y - 3 + bounce/2, 6, 6);
+    const indicatorSize = 8; // Increased from 6
+    ctx.fillRect(x + offset.x - indicatorSize/2 + bounce/2, y + offset.y - indicatorSize/2 + bounce/2, indicatorSize, indicatorSize);
     
-    // Add glowing effect
+    // Add border to direction indicator
+    ctx.strokeStyle = '#000000';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(x + offset.x - indicatorSize/2 + bounce/2, y + offset.y - indicatorSize/2 + bounce/2, indicatorSize, indicatorSize);
+    
+    // Enhanced glowing effect
     ctx.shadowColor = player.color;
-    ctx.shadowBlur = 10;
-    ctx.fillRect(x - 1, y - 1, 2, 2);
+    ctx.shadowBlur = 15;
+    ctx.fillRect(x - 2, y - 2, 4, 4);
     ctx.shadowBlur = 0;
+    
+    // Player name tag (optional, can be toggled)
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
+    ctx.fillRect(x - 25, y + 35, 50, 20);
+    ctx.strokeStyle = player.color;
+    ctx.lineWidth = 2;
+    ctx.strokeRect(x - 25, y + 35, 50, 20);
+    
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '12px Courier New';
+    ctx.textAlign = 'center';
+    ctx.fillText('LAKSH', x, y + 48);
 }
 
 function drawNPC(npc) {
@@ -828,24 +884,36 @@ function drawNPC(npc) {
     
     const config = npcConfig[npc.type] || { color: '#ffffff', emoji: '❓' };
     
-    // Shadow
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+    // Larger shadow for bigger NPCs
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
     ctx.beginPath();
-    ctx.ellipse(x, y + 25, 15, 6, 0, 0, Math.PI * 2);
+    ctx.ellipse(x, y + 35, 25, 10, 0, 0, Math.PI * 2);
     ctx.fill();
     
-    // Pulsing effect
-    const pulse = Math.sin(gameState.gameTime * 0.05) * 0.2 + 1;
-    const size = 20 * pulse;
+    // Enhanced pulsing effect
+    const pulse = Math.sin(gameState.gameTime * 0.05) * 0.3 + 1;
+    const baseSize = 35; // Increased from 20 to 35
+    const size = baseSize * pulse;
     
-    // NPC body
+    // NPC body - much larger and more visible
     ctx.fillStyle = config.color;
     ctx.fillRect(x - size/2, y - size/2, size, size);
     
-    // Emoji
-    ctx.font = `${size + 8}px Courier New`;
+    // Add border for better visibility
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 3;
+    ctx.strokeRect(x - size/2, y - size/2, size, size);
+    
+    // Much larger emoji
+    ctx.font = `${size + 15}px Courier New`; // Increased from size + 8
     ctx.textAlign = 'center';
-    ctx.fillText(config.emoji, x, y + 6);
+    ctx.fillStyle = '#000000'; // Black emoji for better contrast
+    ctx.fillText(config.emoji, x, y + 8);
+    
+    // White outline for emoji for even better visibility
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 2;
+    ctx.strokeText(config.emoji, x, y + 8);
     
     // Interaction indicator
     const distance = Math.sqrt(
@@ -854,31 +922,71 @@ function drawNPC(npc) {
     );
     
     if (distance < gameState.interactionRadius) {
-        // Interaction circle
+        // Larger, more visible interaction circle
         ctx.strokeStyle = '#ffffff';
-        ctx.lineWidth = 2;
+        ctx.lineWidth = 4;
         ctx.beginPath();
-        ctx.arc(x, y, 40 + Math.sin(gameState.gameTime * 0.1) * 8, 0, Math.PI * 2);
+        ctx.arc(x, y, 55 + Math.sin(gameState.gameTime * 0.1) * 12, 0, Math.PI * 2);
         ctx.stroke();
         
-        // Instruction text
+        // Add pulsing inner circle
+        ctx.strokeStyle = config.color;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(x, y, 45 + Math.sin(gameState.gameTime * 0.15) * 8, 0, Math.PI * 2);
+        ctx.stroke();
+        
+        // Much larger instruction text
         ctx.fillStyle = '#ffffff';
-        ctx.font = '12px Courier New';
+        ctx.font = '18px Courier New'; // Increased from 12px
         ctx.textAlign = 'center';
-        ctx.fillText('SPACE', x, y - 35);
+        
+        // Add background for better text visibility
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
+        ctx.fillRect(x - 35, y - 55, 70, 25);
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(x - 35, y - 55, 70, 25);
+        
+        // White text on dark background
+        ctx.fillStyle = '#ffffff';
+        ctx.fillText('SPACE', x, y - 38);
     }
     
-    // Name label
+    // Much larger and more visible name label
     ctx.fillStyle = npc.discovered ? '#00ff00' : '#ffffff';
-    ctx.font = '10px Courier New';
+    ctx.font = '16px Courier New'; // Increased from 10px
     ctx.textAlign = 'center';
-    ctx.fillText(npc.name, x, y + 45);
     
-    // Discovery indicator
+    // Add background rectangle for text visibility
+    const textWidth = ctx.measureText(npc.name).width;
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
+    ctx.fillRect(x - textWidth/2 - 10, y + 50, textWidth + 20, 25);
+    ctx.strokeStyle = config.color;
+    ctx.lineWidth = 2;
+    ctx.strokeRect(x - textWidth/2 - 10, y + 50, textWidth + 20, 25);
+    
+    // Text with outline for maximum visibility
+    ctx.fillStyle = npc.discovered ? '#00ff00' : '#ffffff';
+    ctx.fillText(npc.name, x, y + 67);
+    ctx.strokeStyle = '#000000';
+    ctx.lineWidth = 1;
+    ctx.strokeText(npc.name, x, y + 67);
+    
+    // Larger discovery indicator
     if (npc.discovered) {
         ctx.fillStyle = '#ffff00';
-        ctx.font = '16px Courier New';
-        ctx.fillText('✓', x + 20, y - 20);
+        ctx.font = '24px Courier New'; // Increased from 16px
+        // Add glow effect for discovery checkmark
+        ctx.shadowColor = '#ffff00';
+        ctx.shadowBlur = 10;
+        ctx.fillText('✓', x + 30, y - 25);
+        ctx.shadowBlur = 0;
+        
+        // Add outline to checkmark
+        ctx.strokeStyle = '#000000';
+        ctx.lineWidth = 2;
+        ctx.strokeText('✓', x + 30, y - 25);
     }
 }
 

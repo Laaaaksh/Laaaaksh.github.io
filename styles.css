@@ -184,11 +184,12 @@ canvas {
 }
 
 .dialog-text {
-    font-size: 16px;
-    line-height: 1.6;
+    font-size: 18px;
+    line-height: 1.7;
     color: #fff;
     margin-bottom: 15px;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+    font-weight: 500;
 }
 
 .dialog-continue {
@@ -359,7 +360,7 @@ canvas {
     }
     
     .dialog-text {
-        font-size: 14px;
+        font-size: 16px;
     }
     
     .mini-map {
