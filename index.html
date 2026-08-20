@@ -3,77 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laksh Sadhwani - Senior Backend Engineer | Adventure Portfolio</title>
-    <meta name="description" content="Welcome to Laksh's interactive portfolio - explore my journey as a Senior Backend Engineer at Razorpay through an adventure game!">
-    <meta name="keywords" content="Laksh Sadhwani, Backend Engineer, Razorpay, Golang, Python, Software Developer, NIT Karnataka">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+    <title>Laksh Sadhwani</title>
+    <meta name="description" content="Laksh Sadhwani - backend engineer, occasional tool-builder.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐙</text></svg>">
     <link rel="stylesheet" href="styles.css">
-    
-    <!-- Open Graph / Social Media -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Laksh Sadhwani - Senior Backend Engineer">
-    <meta property="og:description" content="Explore my journey as a Senior Backend Engineer through an interactive adventure game!">
-    <meta property="og:url" content="https://laaaaksh.github.io">
-    <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
-    <div class="game-container">
-        <div class="loading-screen" id="loadingScreen">
-            <div class="loading-text">
-                🚀 LAKSH'S ADVENTURE PORTFOLIO 🚀<br>
-                <span style="font-size: 1.2rem; color: #ffff00;">Senior Backend Engineer @ Razorpay</span><br>
-                <span style="font-size: 0.9rem;">Loading the coolest backend adventure...</span>
-            </div>
-            <div class="loading-bar">
-                <div class="loading-progress" id="loadingProgress"></div>
-            </div>
-        </div>
+    <main>
+        <h1>Laksh Sadhwani</h1>
 
-        <canvas id="gameCanvas"></canvas>
+        <p>
+            I build backend systems, mostly in Go, sometimes in Python.
+            I studied Material Science at NIT Karnataka<!-- TODO(captain): confirm degree/major is correct - carried over from game.js dialogue, not independently verified -->,
+            which is an unusual way to end up writing Go for a living, and yet.
+            <!--
+              TODO(captain): current role/employer is unclear and I did not want to guess.
+              The old site said "Senior Backend Engineer at Razorpay, 4+ years experience" -
+              likely stale. Public GitHub profile currently lists company as "Snabbit".
+              Neither has been confirmed as current. Please replace this paragraph with
+              an accurate one-liner about where you work now and how long you've been at it.
+            -->
+        </p>
 
-        <div class="ui-overlay" id="uiOverlay">
-            <div><strong>🎯 Current Zone:</strong> <span id="currentArea">Hub World</span></div>
-            <div><strong>🔥 Experience Level:</strong></div>
-            <div class="health-bar">
-                <div class="health-fill" id="healthFill"></div>
-            </div>
-            <div><strong>🏆 Discoveries:</strong> <span id="discoveries">0/20</span></div>
-            <div style="font-size: 11px; margin-top: 10px; color: #888;">
-                <div>💼 Razorpay Senior SDE</div>
-                <div>🏫 NIT Karnataka</div>
-                <div>🌟 4+ Years Experience</div>
-            </div>
-        </div>
+        <h2>Projects</h2>
+        <p>Some things I've built that are still around. Mostly Go, mostly backend, occasionally not.</p>
+        <ul>
+            <li>
+                <strong><a href="https://github.com/Laaaaksh/vessel">vessel</a></strong>
+                &mdash; a keyboard-driven TUI for Apple's native Mac containers.
+            </li>
+            <li>
+                <strong><a href="https://github.com/Laaaaksh/internal-transfers-service">internal-transfers-service</a></strong>
+                &mdash; a production-grade microservice for internal fund transfers: ACID guarantees, pessimistic locking, real test coverage.
+            </li>
+            <li>
+                <strong><a href="https://github.com/Laaaaksh/sticker-campaign-service">sticker-campaign-service</a></strong>
+                &mdash; Go + Postgres backend for a sticker-based loyalty campaign: ingestion, calculation, balance tracking, analytics.
+            </li>
+            <li>
+                <strong><a href="https://github.com/Laaaaksh/call-notes-AI">call-notes-AI</a></strong>
+                &mdash; real-time call note-taking for medical support calls, via a rule engine &rarr; NER &rarr; LLM pipeline that files itself into Salesforce.
+            </li>
+        </ul>
 
-        <div class="controls-info" id="controlsInfo">
-            🎮 <strong>WASD</strong> to explore • <strong>SPACE</strong> to interact • <strong>E</strong> for details • <strong>M</strong> for map
-        </div>
+        <h2>Writing</h2>
+        <p>
+            Nothing published yet.
+            <!-- TODO(captain): confirm there's genuinely nothing to link here (a blog, a Substack, a paper) before this ships -->
+        </p>
 
-        <div class="dialog-box" id="dialogBox">
-            <div class="dialog-text" id="dialogText"></div>
-            <div class="dialog-continue">Press ENTER to continue...</div>
-        </div>
-
-        <div class="achievement-popup" id="achievementPopup">
-            <div id="achievementText">🏆 Discovery Unlocked!</div>
-        </div>
-
-        <div class="mini-map" id="miniMap">
-            <canvas id="miniMapCanvas" width="150" height="120"></canvas>
-        </div>
-
-        <!-- Touch Controls for Mobile -->
-        <div class="touch-controls" id="touchControls">
-            <div class="touch-grid">
-                <button class="touch-btn" data-key="w">↑</button>
-                <button class="touch-btn" data-key="a">←</button>
-                <button class="touch-btn interact-btn" data-key=" ">⚡</button>
-                <button class="touch-btn" data-key="d">→</button>
-                <button class="touch-btn" data-key="s">↓</button>
-            </div>
-        </div>
-    </div>
-
-    <script src="game.js"></script>
+        <h2>Misc</h2>
+        <ul>
+            <li><a href="https://github.com/Laaaaksh">GitHub</a></li>
+            <li>
+                <a href="https://linkedin.com/in/sadhwanilaksh">LinkedIn</a>
+                <!-- TODO(captain): pulled from the repo README, not re-verified live - confirm it's still correct -->
+            </li>
+            <li><a href="mailto:laksh.sadhwani07@gmail.com">Email</a></li>
+            <li><a href="game-portfolio.html">there is a silly game version of this page</a></li>
+        </ul>
+    </main>
 </body>
 </html>
