@@ -4,6 +4,7 @@ This file is the project's committed home for project-intrinsic agent knowledge:
 
 - Add durable project-specific notes here as they are discovered through real work.
 - `index.html` + `styles.css` are the real personal site (minimal, static, no build step, no external requests). `game-portfolio.html` is a separate standalone entry point for the old canvas adventure-game portfolio; it and `game.js` use `game-styles.css`, not `styles.css`. Don't let edits to one stylesheet bleed into the other.
+- `hello/index.html` is a fully self-contained page (inline CSS/JS, no shared stylesheet) at the fixed public path `https://laaaaksh.github.io/hello/` — linked from the profile README, so that path is a contract.
 - No JS framework, bundler, or dependency is intended for the site pages — GitHub Pages serves the repo root directly from `master`.
 
 ## Maintaining this file
