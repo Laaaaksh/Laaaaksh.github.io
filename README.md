@@ -11,7 +11,7 @@
 
 <div align="center">
 
-### 🎯 Senior Backend Engineer @ Razorpay | 🎓 NIT Karnataka Graduate
+### 🎯 Agentic Engineering Lead @ Snabbit | 🎓 NIT Karnataka Graduate
 
 [![Portfolio Game](https://img.shields.io/badge/🎮_Play_My_Portfolio-Adventure_Mode-00ff00?style=for-the-badge)](https://laaaaksh.github.io)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/sadhwanilaksh)
@@ -50,8 +50,8 @@ type Education struct {
 
 var laksh = BackendEngineer{
     Name:       "Laksh Sadhwani",
-    Role:       "Senior Software Development Engineer - Backend",
-    Company:    "Razorpay",
+    Role:       "Senior Software Engineer - Agentic Engineering Lead",
+    Company:    "Snabbit",
     Experience: "4+ Years",
     Specialization: []string{
         "Scalable System Architecture",
@@ -75,8 +75,12 @@ var laksh = BackendEngineer{
 
 ## 🏢 Professional Journey
 
+### **🤖 Snabbit**
+
+**Senior Software Engineer - Agentic Engineering Lead** `May 2026 - Present`
+
 ### **🔥 Razorpay** - *India's Leading Fintech Company*
-**Senior Software Development Engineer - Backend** `May 2025 - Present`  
+**Senior Software Development Engineer - Backend** `May 2025 - March 2026`  
 **Software Development Engineer - Backend** `July 2022 - April 2025`
 
 #### 🚀 **Major Achievements:**
