@@ -55,7 +55,6 @@ python -m SimpleHTTPServer 8000
 
 Once the server starts, your browser will automatically open to:
 - **URL**: `http://localhost:8000`
-- **Game**: Interactive adventure portfolio
 - **Controls**: WASD + SPACE (desktop) or touch controls (mobile)
 
 ## 🌟 **Features**

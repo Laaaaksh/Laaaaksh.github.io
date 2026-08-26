@@ -1,7 +1,7 @@
 {
-  "name": "laksh-adventure-portfolio",
+  "name": "laaaaksh-github-io",
   "version": "1.0.0",
-  "description": "🚀 Laksh Sadhwani's Interactive Adventure Portfolio - A game-based exploration of a Senior Backend Engineer's journey at Razorpay",
+  "description": "Laksh Sadhwani's personal site.",
   "main": "index.html",
   "scripts": {
     "start": "node server.js",
@@ -11,13 +11,8 @@
     "preview": "npm run serve"
   },
   "keywords": [
-    "portfolio",
-    "game",
-    "interactive",
-    "backend-engineer",
-    "razorpay",
-    "canvas",
-    "javascript"
+    "personal-site",
+    "static"
   ],
   "author": {
     "name": "Laksh Sadhwani",
