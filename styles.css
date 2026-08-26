@@ -1,78 +1,78 @@
-:root {
-    --bg: #f0e5d5;
-    --fg: #161616;
-    --muted: #666;
-}
+/* Layout and type follow benjaminfspector.com: one narrow left-aligned column,
+   cream page, no indents, no dark mode. Delius is self-hosted so the site keeps
+   making zero external requests (see AGENTS.md). */
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --bg: #161616;
-        --fg: #eeeeec;
-        --muted: #999;
-    }
-}
-
-* {
-    box-sizing: border-box;
+@font-face {
+    font-family: 'Delius';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('assets/fonts/delius-latin-400.woff2') format('woff2');
 }
 
 body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--fg);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    font-size: 1.05rem;
-    line-height: 1.65;
-}
-
-main {
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 4rem 1.5rem 6rem;
-}
-
-/* Name renders lowercase so the intro reads like the benjaminfspector.com reference;
-   markup keeps the real casing for copy-paste and screen readers. */
-h1 {
-    font-size: 1.9rem;
-    font-weight: 700;
-    margin: 0 0 1.5rem;
-    text-transform: lowercase;
-}
-
-h2 {
-    font-size: 1.15rem;
-    font-weight: 700;
-    margin: 2.75rem 0 0.75rem;
-}
-
-p {
-    margin: 0 0 1rem;
-}
-
-p + p {
-    margin-top: 1rem;
-}
-
-ul {
-    margin: 0 0 1rem;
-    padding-left: 1.25rem;
-}
-
-li {
-    margin-bottom: 0.6rem;
+    background-color: #f0e5d5;
+    color: #161616;
+    font-family: 'Delius', ui-rounded, 'Segoe UI', system-ui, sans-serif;
+    line-height: 1.5;
+    margin: 120px;
+    max-width: 540px;
 }
 
 a {
-    color: inherit;
-    text-decoration-color: var(--muted);
-    text-underline-offset: 2px;
+    color: rgb(0, 64, 128);
 }
 
-a:hover {
-    text-decoration-color: var(--fg);
+/* No text-indent anywhere: every line starts flush left. */
+p {
+    text-indent: 0;
 }
 
-strong {
-    font-weight: 700;
+figure {
+    margin: 0 0 16px 0;
+}
+
+.portrait {
+    width: 25%;
+    display: block;
+}
+
+.name {
+    font-weight: bold;
+}
+
+.hi {
+    font-size: 24px;
+}
+
+li {
+    margin: 8px 0;
+}
+
+/* The reference site nests its lists inside <p>; keep the same rhythm without it. */
+ul {
+    padding-left: 24px;
+}
+
+@media (max-width: 780px) {
+    body {
+        margin: 40px 24px 80px;
+    }
+
+    .portrait {
+        width: 40%;
+    }
+}
+
+blockquote {
+    margin: 0 0 16px 0;
+    padding-left: 16px;
+    border-left: 2px solid rgba(22, 22, 22, 0.25);
+    font-style: italic;
+}
+
+.colophon {
+    margin-top: 40px;
+    font-size: 0.85em;
+    opacity: 0.7;
 }
